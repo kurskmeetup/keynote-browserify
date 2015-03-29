@@ -1,0 +1,17 @@
+{
+  "name": "keynote-browserify",
+  "version": "0.0.0",
+  "description": "Keynote about Browserify and isomorphic apps",
+  "main": "src/app.js",
+  "dependencies": {
+    "express": "*",
+    "stylus": "*",
+    "nib": "*",
+    "browserify": "*",
+    "browserify-middleware": "*",
+    "nanotemplates": "*",
+    "highlight.js": "*"
+  },
+  "author": "Boris Okunskiy",
+  "license": "ISC"
+}
