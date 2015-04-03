@@ -32,7 +32,7 @@ gulp.task('nano', function() {
     var Nano = require('nanotemplates')
       , nano = new Nano({ basedir: 'views' });
     var relPath = path.relative('views', file.path);
-    nano.render(relPath, { baseUrl: '/keynote-browserify' }, function(err, html) {
+    nano.render(relPath, { baseUrl: '/keynote-browserify/public' }, function(err, html) {
       if (err) return cb(err);
       file.contents = new Buffer(html, 'utf-8');
       cb(null, file);
