@@ -3,6 +3,6 @@ var _ = require('underscore')
   , Promise = require('promise')
   , utils = require('src/utils')
   , flux = require('flux')
-  , UserStore= require('src/store/user')
-  , UsersListView = require('src/views/users/list');
+  , UserStore = require('src/store/user')
+  , ProjectStore = require('src/store/project');
   // ...

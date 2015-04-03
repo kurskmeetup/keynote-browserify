@@ -6,9 +6,9 @@ define('UsersList',
     'src/utils',
     'flux',
     'src/store/user',
-    'srs/views/users/list'
+    'srs/store/project'
   ],
-  function(_, events, Promise, utils, flux, UserStore, UsersListView) {
-    // Можно выдохнуть и начать писать
+  function(_, events, Promise, utils, flux, UserStore, ProjectStore) {
+    // Можно выдохнуть
   }
 );

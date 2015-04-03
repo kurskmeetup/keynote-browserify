@@ -6,7 +6,7 @@
       return (root.returnExportsGlobal = factory(magic));
     });
   } else {
-    root.returnExportsGlobal = factory(root.b);
+    root.returnExportsGlobal = factory(root.magic);
   }
 }(this, function (magic) {
   magic.castSpell = function(spell) {
