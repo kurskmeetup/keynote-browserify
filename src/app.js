@@ -32,7 +32,7 @@ app.get('/',function(req, res, next) {
 });
 
 app.get('/*.html', function(req, res, next) {
-  nano.render(req.params[0] + '.html', function(err, html) {
+  nano.render(req.params[0] + '.html', { baseUrl: ''}, function(err, html) {
     /* istanbul ignore if */
     if (err) return next(err);
     res.send(html);
