@@ -1,11 +1,40 @@
-<include file="layout.html">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Browserify FTW</title>
+    <meta name="author" content="Boris Okunskiy" />
+    <link href="/css/index.css" rel="stylesheet" />
+  </head>
 
-  <def:slides>
-    <div class="step dim"
-         data-x="0"
-         data-y="0">
-      <p>// TODO написать первый слайд</p>
+  <body class="impress-not-supported">
+    <div id="impress">
+      <div class="step dim todo"
+           data-x="0"
+           data-y="0">
+        <p>
+          // TODO придумать крутое название,<br/>
+          // как у Васи
+        </p>
+      </div>
+      <div class="step"
+           data-x="0"
+           data-y="0">
+        <h1>
+          5 причин, чтобы любить<br/>
+          <strong>Browserify</strong>
+        </h1>
+      </div>
+      <include file="01-locals/slides.html"/>
+      <include file="02-exports/slides.html"/>
+      <div id="overview"
+           class="step"
+           data-x="0"
+           data-y="0"
+           data-scale="4">
+      </div>
     </div>
-  </def:slides>
-
-</include>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
