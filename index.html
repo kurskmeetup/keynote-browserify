@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Browserify FTW</title>
+    <meta name="author" content="Boris Okunskiy" />
+    <link href="/css/index.css" rel="stylesheet" />
+  </head>
+
+  <body class="impress-not-supported">
+    <div id="impress">
+      <div class="step"
+           data-x="0"
+           data-y="0">
+        <h1>
+          8 причин, чтобы любить<br/>
+          <strong>Browserify</strong>
+        </h1>
+      </div>
+      <div class="step"
+     data-x="1000"
+     data-y="0"
+     data-rotate="0">
+  <h2>#1 Локальные переменные</h2>
+  <p>Прямо с первой строки, без отступов и оберток</p>
+  <pre class="js"><code>var local = 'I don\'t leak into global';
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="1000"
+     data-y="0"
+     data-z="-1000"
+     data-rotate="0">
+  <p>И даже не начинай про обертки и
+    <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a>
+  </p>
+  <pre class="js"><code>(function (window, document, angular,
+           jQuery, whatever, undefined) {
+
+  var local = 'I don\'t leak into global';
+
+})(window, document, angular,
+  jQuery, whatever);
+</code></pre>
+</div>
+
+      <div class="step"
+     data-x="1000"
+     data-y="700"
+     data-rotate="-90">
+  <h2>#2 Понятный экспорт</h2>
+  <p>Не нужно быть оракулом, чтобы видеть public API</p>
+  <pre class="js"><code>// magic.js
+exports.castSpell = function(spell) {
+  document.querySelector('#wand').innerHTML = spell;
+};
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="1000"
+     data-y="700"
+     data-z="-1000"
+     data-rotate="-90">
+  <p>... в отличие от
+    <a href="https://github.com/umdjs/umd">UMD</a>
+  </p>
+  <pre class="js"><code>(function (root, factory) {
+  if (typeof exports == 'object') {
+    module.exports = factory(require('magic'));
+  } else if (typeof define == 'function' && define.amd) {
+    define(['magic'], function (magic) {
+      return (root.returnExportsGlobal = factory(magic));
+    });
+  } else {
+    root.returnExportsGlobal = factory(root.magic);
+  }
+}(this, function (magic) {
+  magic.castSpell = function(spell) {
+    document.querySelector('#wand').innerHTML = spell;
+  };
+}));
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="1000"
+     data-y="700"
+     data-z="-1000"
+     data-rotate="-90">
+  <img src="/img/wat.jpg"/>
+</div>
+
+      <div class="step"
+     data-x="2000"
+     data-y="700"
+     data-rotate="0">
+  <h2>#3 Понятный импорт</h2>
+  <p>Вместо тысячи слов</p>
+  <pre class="js"><code>var magic = require('./magic');
+
+magic.castSpell('Fireball');
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="2000"
+     data-y="700"
+     data-z="-1000"
+     data-rotate="0">
+  <p>Это масштабируется нормально</p>
+  <pre class="js"><code>var _ = require('underscore')
+  , EventEmitter = require('events').EventEmitter
+  , Promise = require('promise')
+  , utils = require('src/utils')
+  , flux = require('flux')
+  , UserStore = require('src/store/user')
+  , ProjectStore = require('src/store/project');
+  // ...
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="2000"
+     data-y="700"
+     data-z="-2000"
+     data-rotate="0">
+  <p>А это?</p>
+  <pre class="js"><code>define('UsersList',
+  [
+    'underscore',
+    'events',
+    'Promise',
+    'src/utils',
+    'flux',
+    'src/store/user',
+    'srs/store/project'
+  ],
+  function(_, events, Promise, utils, flux, UserStore, ProjectStore) {
+    // Можно выдохнуть
+  }
+);
+</code></pre>
+</div>
+
+      <div class="step"
+     data-x="2000"
+     data-y="1400"
+     data-rotate="90">
+  <h2>#4 npm</h2>
+  <img src="/img/npm-i.jpg"/>
+</div>
+<div class="step dim"
+     data-x="2000"
+     data-y="1400"
+     data-z="-1000"
+     data-rotate="90">
+  <p>В npm есть <em>вообще</em> всё.</p>
+  <p>Умеешь определять пол по отчеству?</p>
+  <pre class="js"><code>require('petrovich')
+  .detect_gender('Ильинична'); // 'female'
+</code></pre>
+</div>
+<div class="step dim"
+     data-x="2000"
+     data-y="1400"
+     data-z="-2000"
+     data-rotate="90">
+  <p>Ах да, npm — самый огромный репозиторий в мире</p>
+  <img src="/img/npm.png"/>
+</div>
+
+      <div class="step"
+     data-x="1000"
+     data-y="1400"
+     data-rotate="0">
+  <h2>#5 Инструментарий</h2>
+  <div class="middle">
+    <img src="/img/gulp.png" height="240"/>
+    <img src="/img/grunt.png" height="240"/>
+    <img src="/img/express.png" width="320"/>
+  </div>
+</div>
+<div class="step dim"
+     data-x="1000"
+     data-y="1400"
+     data-z="-1000"
+     data-rotate="0">
+  <h2>Бэкэнд не Node.js? — Не проблема.</h2>
+  <p>В продакшн:</p>
+  <pre class="bash"><code>browserify main.js -o build.js</code></pre>
+  <p>В разработке:</p>
+  <pre class="bash"><code>watchify main.js -o build.js</code></pre>
+</div>
+
+      <div class="step"
+     data-x="0"
+     data-y="1400"
+     data-rotate="90">
+  <h2>#6 ES6</h2>
+  <p>Стрелочные функции, генераторы и классы —<br/>уже сегодня.</p>
+  <p>Трансформы сделают всю магию:</p>
+  <pre class="bash"><code>browserify -t es6ify ...</code></pre>
+  <p>И это будет работать в IE 9.</p>
+</div>
+
+      <div class="step"
+     data-x="0"
+     data-y="700"
+     data-rotate="180">
+  <h2>#7 Изоморфные приложения</h2>
+  <p>Мечты сбываются: один и тот же код на клиенте<br/>и на сервере<span class="asterisk">*</span></p>
+  <p class="remark">
+    <span class="asterisk">*</span>
+    Только для <del>supreme enlightened</del> Node.js
+  </p>
+</div>
+
+      <div class="step"
+     data-x="2000"
+     data-y="0"
+     data-rotate="-90">
+  <h2>#8 Крутые картинки</h2>
+  <img src="/img/wizard.png" height="240"/>
+  <img src="/img/browserify-middleware.jpg"/>
+  <img src="/img/wizard_hat.png" height="240"/>
+  <p>Ты мечтал их использовать, но у тебя не было повода.</p>
+</div>
+
+      <div id="overview"
+           class="step centered dim"
+           data-x="1000"
+           data-y="700"
+           data-scale="3">
+        <p>Спасибо!</p>
+      </div>
+    </div>
+    <script src="/js/index.js"></script>
+  </body>
+</html>

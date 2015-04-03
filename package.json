@@ -1,7 +1,7 @@
 {
   "name": "keynote-browserify",
   "version": "0.0.0",
-  "description": "Keynote about Browserify and isomorphic apps",
+  "description": "Keynote about Browserify",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app"
@@ -15,6 +15,14 @@
     "nanotemplates": "*",
     "highlight.js": "*"
   },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-rename": "*",
+    "gulp-stylus": "*",
+    "gulp-browserify": "*",
+    "map-stream": "*"
+  },
+  "repository": "",
   "author": "Boris Okunskiy",
   "license": "ISC"
 }
